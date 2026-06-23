@@ -13,6 +13,8 @@
   ],
   "allowedTools": [
     "read",
+    "write",
+    "shell",
     "grep",
     "glob",
     "web_search",
