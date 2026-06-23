@@ -59,7 +59,8 @@ applications/stripe__senior-ml-engineer/
 ## Building PDF + DOCX
 
 The agent builds both formats from the single tailored `.tex`. Dependencies:
-`tectonic` (PDF) and `pandoc` (DOCX). To build manually from an application folder:
+`tectonic` (PDF), `pandoc` (DOCX), and optionally `poppler` (`pdfinfo`, for a
+deterministic page-count check). To build manually from an application folder:
 
 ```bash
 cd applications/<company>__<position>/

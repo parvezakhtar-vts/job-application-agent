@@ -64,25 +64,41 @@ Edit only the copied .tex. Rules:
 - **No manipulation.** No hidden text, no keyword stuffing (see ats-notes.md).
 - **Valid LaTeX**: balanced braces; escape `% & $ # _`.
 
-### 5. Build PDF + DOCX
-From the application folder, build both from the single tailored `.tex`:
+### 5. Build PDF + DOCX (deterministic)
+From the application folder, build both from the single tailored `.tex`. Use
+`--keep-logs` so the page count and warnings are inspectable:
 ```bash
-tectonic <company-slug>-resume.tex
-
+tectonic --keep-logs <company-slug>-resume.tex      # -> <slug>-resume.pdf + <slug>-resume.log
 pandoc <company-slug>-resume.tex \
   --lua-filter=../../.kiro/skills/resume-tailor/flatten-tables.lua \
   -o <company-slug>-resume.docx
 ```
-The Lua filter flattens the job-heading `tabular*` blocks into plain
-`Company — Location` / `Title — Dates` lines so strict parsers read them linearly.
+- **Logs**: tectonic discards logs by default; `--keep-logs` writes `<slug>-resume.log`
+  in the application folder. Build notes/warnings also stream to **stderr**. The TeX
+  package cache lives at `~/Library/Caches/Tectonic` (macOS).
+- The Lua filter flattens the job-heading `tabular*` blocks into plain
+  `Company — Location` / `Title — Dates` lines so strict parsers read them linearly.
 
-### 6. Parse self-check (feedback loop)
+### 6. Self-check (one pass, deterministic — don't eyeball)
+Run these three checks once; do not iterate by guesswork:
 ```bash
-pandoc <company-slug>-resume.docx -t plain | grep -c -- "----"   # expect 0
+# (a) page count — pick ONE, both deterministic:
+pdfinfo <slug>-resume.pdf | awk '/^Pages/{print $2}'
+grep -o "Output written on .*([0-9]* page" <slug>-resume.log   # "(N pages"
+# (b) no tables survived into the DOCX (expect 0):
+pandoc <slug>-resume.docx -t plain | grep -c -- "----"
+# (c) confirm key keywords survive extraction (unwrap first to avoid false misses):
+pandoc <slug>-resume.docx -t plain | tr '\n' ' ' | grep -o -i "<keyword>"
 ```
-Confirm target keywords (and ligature-prone words like "fine-tuning", "classifier",
-"efficient") survive extraction. **If the count is not 0 or keywords are missing or
-broken, fix the cause and rebuild before continuing** — do not report a failing build.
+- **Page target**: decide 1-page vs 2-page *up front* with the user — this base
+  resume is ~2 pages of genuine content, so 2 pages is normal for a senior role.
+  Do NOT delete real experience just to force one page; trim wording first, and only
+  cut the least-relevant bullets if the user explicitly wants one page.
+- For the keyword check, always `tr '\n' ' '` first: `pandoc -t plain` wraps at ~72
+  chars and will split phrases across lines, causing false "missing" results.
+- Ignore cosmetic `Overfull \hbox` warnings (a few pt) unless text visibly crosses
+  the margin.
+- If a check genuinely fails, fix the cause and rebuild **once** — avoid trial loops.
 
 ### 7. Report
 Concise diff-style summary: keywords added/removed/reordered; sections changed;
