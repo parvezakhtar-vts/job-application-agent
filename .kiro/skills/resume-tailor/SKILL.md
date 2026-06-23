@@ -25,7 +25,7 @@ Copy this into your reply and check items off as you go:
 - [ ] 3. Research role keywords (3-5 parallel searches) + read ats-notes.md
 - [ ] 4. Tailor the copied .tex (mirror JD, prove skills in bullets, no fabrication)
 - [ ] 5. Build PDF (tectonic) + DOCX (pandoc + flatten-tables.lua)
-- [ ] 6. Parse self-check; if it fails, fix and rebuild
+- [ ] 6. Self-check (page count, no tables, keywords survive)
 - [ ] 7. Report changes + gaps
 - [ ] 8. Draft the cover letter (mandatory) via the cover-letter skill
 - [ ] 9. Commit the whole application folder once & push
@@ -79,26 +79,24 @@ pandoc <company-slug>-resume.tex \
 - The Lua filter flattens the job-heading `tabular*` blocks into plain
   `Company — Location` / `Title — Dates` lines so strict parsers read them linearly.
 
-### 6. Self-check (one pass, deterministic — don't eyeball)
-Run these three checks once; do not iterate by guesswork:
+### 6. Self-check
+Run these checks after building:
 ```bash
-# (a) page count — pick ONE, both deterministic:
+# (a) page count — use either:
 pdfinfo <slug>-resume.pdf | awk '/^Pages/{print $2}'
 grep -o "Output written on .*([0-9]* page" <slug>-resume.log   # "(N pages"
 # (b) no tables survived into the DOCX (expect 0):
 pandoc <slug>-resume.docx -t plain | grep -c -- "----"
-# (c) confirm key keywords survive extraction (unwrap first to avoid false misses):
+# (c) confirm key keywords survive extraction (unwrap newlines first):
 pandoc <slug>-resume.docx -t plain | tr '\n' ' ' | grep -o -i "<keyword>"
 ```
-- **Page target**: decide 1-page vs 2-page *up front* with the user — this base
-  resume is ~2 pages of genuine content, so 2 pages is normal for a senior role.
-  Do NOT delete real experience just to force one page; trim wording first, and only
-  cut the least-relevant bullets if the user explicitly wants one page.
-- For the keyword check, always `tr '\n' ' '` first: `pandoc -t plain` wraps at ~72
-  chars and will split phrases across lines, causing false "missing" results.
-- Ignore cosmetic `Overfull \hbox` warnings (a few pt) unless text visibly crosses
-  the margin.
-- If a check genuinely fails, fix the cause and rebuild **once** — avoid trial loops.
+- **Pages**: the base resume is 2 pages, and the tailored resume may also be 2 pages.
+  Keep all real experience; do not delete content to force one page. Only produce a
+  one-page version if the user explicitly asks.
+- For the keyword check, `tr '\n' ' '` first: `pandoc -t plain` wraps at ~72 chars and
+  splits phrases across lines, which causes false "missing" results.
+- Ignore cosmetic `Overfull \hbox` warnings (a few pt) unless text crosses the margin.
+- If a check fails, fix the cause and rebuild.
 
 ### 7. Report
 Concise diff-style summary: keywords added/removed/reordered; sections changed;
@@ -121,7 +119,8 @@ If `git push` fails (e.g. no network/auth), report it and leave the commit in pl
 ## Guardrails
 - Never fabricate experience, employers, dates, or metrics.
 - Never modify `parvez-akhtar-base-resume.tex`.
-- Keep the resume to one page unless the user asks otherwise — trim, don't pad.
+- The base resume is 2 pages; the tailored resume may be 1 or 2 pages. Keep all real
+  experience and do not pad. Only force one page if the user explicitly asks.
 
 ## After tailoring
 A cover letter is mandatory — always hand off to the `cover-letter` skill. Use the
