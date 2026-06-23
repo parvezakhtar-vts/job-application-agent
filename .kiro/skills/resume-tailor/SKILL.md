@@ -65,6 +65,10 @@ Edit only the copied .tex. Rules:
   into two sentences. (The base resume contains a few `---`; remove them in the copy.)
 - **Match the base formatting.** Do not change the preamble, packages, fonts, or page
   geometry (e.g. keep `a4paper`); the base layout is canonical. Edit content only.
+- **DOCX-safe symbols.** pandoc mangles LaTeX inline math in body text, so replace it:
+  use `\textasciitilde{}` for a tilde (~), `$\vert$` for a pipe (renders as | in both
+  PDF and DOCX), and the word "to" for a math arrow. Keep `\$` for dollar amounts.
+  Avoid `$\sim$`, `$|$`, `$\to$`, and `\textbar{}` (pandoc drops or garbles those).
 - **No manipulation.** No hidden text, no keyword stuffing (see ats-notes.md).
 - **Valid LaTeX**: balanced braces; escape `% & $ # _`.
 
