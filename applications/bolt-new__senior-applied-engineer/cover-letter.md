@@ -1,6 +1,6 @@
 # Cover Letter: Bolt.new (StackBlitz), Senior Applied Engineer
 
-Dear [Hiring Manager Name],
+Hi team,
 
 When an AI agent I shipped at VTS regressed by 10 points on lease-term extraction, I traced it through systematic failure-mode analysis, rebuilt the prompt strategy and image preprocessing, and recovered the full drop back to its ~88% baseline. That is the work Bolt.new is built on: making AI agents reliable enough to turn natural language into production software, not just demos. It is why this role caught my attention.
 

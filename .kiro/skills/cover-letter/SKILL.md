@@ -31,6 +31,7 @@ genuine reason to be interested in *this* company (mission, product, recent news
 
 ### 3. Draft
 Structure (keep to ~250–350 words, 3–4 short paragraphs, one page):
+0. **Salutation:** open with `Hi team,` (not "Dear [Hiring Manager Name],").
 1. **Hook (1–2 sentences):** who you are + why this specific role/company. No
    "I am writing to apply for...".
 2. **Proof (1–2 paragraphs):** 2–3 concrete achievements mapped directly to the JD's
@@ -42,8 +43,7 @@ Structure (keep to ~250–350 words, 3–4 short paragraphs, one page):
 - Write to the application folder as
   `applications/<company-slug>__<position-slug>/cover-letter.md`
   (plain Markdown so it's easy to paste/edit). Offer a `.tex` version on request.
-- Include a `[Hiring Manager Name]` placeholder if the name is unknown; suggest the
-  user look it up on LinkedIn.
+- Open with `Hi team,` — do not use a `[Hiring Manager Name]` placeholder.
 - Weave in 2-3 of the JD's target keywords naturally (many ATS parse the letter too).
 
 ### 5. Commit & push
