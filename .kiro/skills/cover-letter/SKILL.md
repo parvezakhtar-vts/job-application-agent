@@ -44,6 +44,8 @@ Structure (keep to ~250–350 words, 3–4 short paragraphs, one page):
   `applications/<company-slug>__<position-slug>/cover-letter.md`
   (plain Markdown so it's easy to paste/edit). Offer a `.tex` version on request.
 - Open with `Hi team,` — do not use a `[Hiring Manager Name]` placeholder.
+- Sign off with `Best,` then the candidate's name and contact line (matches the
+  casual `Hi team,` opener; avoid stiff closings like "Best regards,"/"Sincerely,").
 - Weave in 2-3 of the JD's target keywords naturally (many ATS parse the letter too).
 
 ### 5. Commit & push

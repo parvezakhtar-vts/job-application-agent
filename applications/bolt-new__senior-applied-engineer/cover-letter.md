@@ -12,6 +12,6 @@ Bolt.new is the rare product where the AI is the entire experience, and WebConta
 
 I would welcome the chance to talk.
 
-Best regards,
+Best,
 Parvez Akhtar
 parvezakhtar218@gmail.com | +91 888-232-7732
