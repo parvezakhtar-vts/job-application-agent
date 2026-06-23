@@ -1,6 +1,6 @@
 ---
 name: cover-letter
-description: Draft a tailored, compelling cover letter for a specific job description. Use after a resume has been tailored, or whenever the user asks for a cover letter. Web-researches what makes a strong cover letter for the role, then produces a concise, specific, non-generic letter grounded in the candidate's real resume.
+description: Drafts a tailored, compelling cover letter for a specific job description. Use after a resume has been tailored, or whenever the user asks for a cover letter. Researches what makes a strong cover letter for the role, then produces a concise, specific, non-generic letter grounded in the candidate's real resume, and auto-commits it.
 ---
 
 # Cover Letter
@@ -44,6 +44,16 @@ Structure (keep to ~250–350 words, 3–4 short paragraphs, one page):
   (plain Markdown so it's easy to paste/edit). Offer a `.tex` version on request.
 - Include a `[Hiring Manager Name]` placeholder if the name is unknown; suggest the
   user look it up on LinkedIn.
+- Weave in 2-3 of the JD's target keywords naturally (many ATS parse the letter too).
+
+### 5. Auto-commit & push
+So the user never pushes manually:
+```bash
+git add applications/<company-slug>__<position-slug>/cover-letter.md
+git commit -m "Add cover letter: <Company> — <Position>"
+git push
+```
+If `git push` fails, report it and leave the commit in place.
 
 ## Guardrails
 - Every claim must be backed by the resume — no invented projects or numbers.

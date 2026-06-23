@@ -1,6 +1,6 @@
 ---
 name: professional-writing
-description: Reusable guidance for clear, professional written communication. Use when editing or drafting resumes, cover letters, emails, LinkedIn messages, or any prose that needs to read crisp, confident, and credible. Tightens wording, removes filler and clichés, and enforces consistent, active, results-oriented style.
+description: Provides reusable guidance for clear, professional written communication. Use when editing or drafting resumes, cover letters, emails, LinkedIn messages, or any prose that needs to read crisp, confident, and credible. Tightens wording, removes filler and clichés, and enforces consistent, active, results-oriented style.
 ---
 
 # Professional Writing

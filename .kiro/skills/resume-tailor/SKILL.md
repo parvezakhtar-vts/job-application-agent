@@ -1,116 +1,106 @@
 ---
 name: resume-tailor
-description: Tailor a base LaTeX resume to a specific job description. Use when the user pastes a JD and wants an ATS-optimized resume. Parses the JD for company and role, creates a per-application folder, copies the base resume, web-researches role keywords and ATS best practices, then adds/removes keywords in the .tex without fabricating experience.
+description: Tailors a base LaTeX resume to a specific job description and builds ATS-clean PDF + DOCX. Use when the user pastes a job description (JD) or JD URL and wants an ATS-optimized resume. Parses the JD for company and role, creates a per-application folder, copies the base resume, researches role keywords, rewrites the .tex to mirror the JD without fabricating experience, builds both formats, and auto-commits the result.
 ---
 
 # Resume Tailor
 
-Turn a pasted job description (JD) into a tailored, ATS-friendly copy of the base
-resume — without inventing experience. You reword, reorder, and surface what is
-already true on the base resume so it maps onto the JD's language.
+Turn a pasted job description (JD) into a tailored, ATS-clean copy of the base
+resume — without inventing experience. Reword, reorder, and surface what is already
+true so it maps onto the JD's language, then build PDF + DOCX.
+
+For how modern ATS parse and rank resumes (semantic matching, format kill-list,
+platform/file-format guidance), see [ats-notes.md](ats-notes.md). Read it before
+the tailoring edit.
 
 ## Inputs
+- **Base resume**: `parvez-akhtar-base-resume.tex` (LaTeX, project root). Never edit it.
+- **JD**: pasted text, or a URL to fetch first (`web_fetch`, truncated mode).
 
-- **Base resume**: `parvez-akhtar-base-resume.tex` (LaTeX, in the project root).
-- **JD**: pasted by the user as plain text, or a URL the user asks you to fetch.
-
-If the JD is a URL, fetch it first (`web_fetch`, truncated mode) before parsing.
-
-## Workflow
+## Workflow checklist
+Copy this into your reply and check items off as you go:
+```
+- [ ] 1. Parse JD (company, role, requirements, exact keywords) and echo summary
+- [ ] 2. Create applications/<company>__<position>/ and copy base resume in
+- [ ] 3. Research role keywords (3-5 parallel searches) + read ats-notes.md
+- [ ] 4. Tailor the copied .tex (mirror JD, prove skills in bullets, no fabrication)
+- [ ] 5. Build PDF (tectonic) + DOCX (pandoc + flatten-tables.lua)
+- [ ] 6. Parse self-check; if it fails, fix and rebuild
+- [ ] 7. Report changes + gaps
+- [ ] 8. Auto-commit & push the application folder
+```
 
 ### 1. Parse the JD
-Extract and echo back to the user a short summary:
-- **Company name** (e.g., "Stripe").
-- **Position / title** (e.g., "Senior ML Engineer").
-- **Seniority** and any location/remote signal.
-- **Hard requirements** (must-have skills, years, tools, certs).
-- **Nice-to-haves**.
-- **Recurring keywords / phrases** — capture exact wording (ATS matches on terms,
-  e.g., "RAG", "LangGraph", "distributed systems", "LLMOps").
-
-If company or position cannot be confidently determined, ask the user once rather
-than guessing.
+Echo a short summary: company, position/title, seniority, location/remote, hard
+requirements, nice-to-haves, and recurring keywords (capture exact wording). If
+company or position is unclear, ask once rather than guessing.
 
 ### 2. Create the application folder
-- Slugify company and position: lowercase, spaces/punct → hyphens.
-- Create `applications/<company-slug>__<position-slug>/`.
-  Example: `applications/stripe__senior-ml-engineer/`.
-- Copy the base resume into it as `<company-slug>-resume.tex`.
-  Use the `read` + `write` tools (read the base .tex, write the copy) or `cp` via
-  shell. Never edit the base resume in place — it is the source of truth.
+Slugify company and position (lowercase, non-alphanumeric → hyphens). Create
+`applications/<company-slug>__<position-slug>/` and copy the base resume in as
+`<company-slug>-resume.tex` (`cp`). The base resume stays untouched.
 
-### 3. Web-research keywords & ATS best practices
-Run a small parallel fan-out (see global Web Research conventions) before editing:
-- `"<role title> resume keywords <current year>"`
-- `"<role title> ATS keywords skills"`
-- `"<key tech from JD> resume best practices"`
-Goal: confirm the high-signal terms and synonyms ATS parsers and recruiters expect
-for this specific role, and any phrasing conventions. Note 5–15 target keywords.
-Keep this lightweight — 3–5 searches, fetch the 2–3 best sources.
+### 3. Research keywords
+Run a small parallel fan-out (3-5 searches): `"<role> resume keywords <current year>"`,
+`"<role> ATS keywords skills"`, `"<key tech> resume best practices"`. Note 5-15 target
+keywords and synonyms. Read [ats-notes.md](ats-notes.md) for the durable rules.
 
-### 4. Tailor the .tex (the core edit)
-Edit only the copied .tex, never the base. Rules:
+### 4. Tailor the .tex (core edit)
+Edit only the copied .tex. Rules:
+- **Truthful.** Only surface skills/experience already on the base resume. Rephrase to
+  match JD vocabulary; never fabricate tools, years, or outcomes. Flag what's missing
+  as a gap instead of inventing it.
+- **Mirror JD language.** Align wording to the JD's exact terms (within truth).
+- **Prove skills in bullets.** Every high-priority Skills keyword should also appear,
+  with a result, in an experience bullet — semantic screeners treat unproven skills as
+  noise. (See ats-notes.md → Prove skills in bullets.)
+- **Expand acronyms once**, e.g. "RAG (Retrieval-Augmented Generation)".
+- **Summary**: lead with the role's top 2-3 requirements the candidate genuinely meets.
+- **Technical Skills**: reorder so the JD's must-have stack is first; add genuine
+  missing keywords; drop irrelevant clutter.
+- **Experience**: reorder bullets so the most JD-relevant impact leads. Preserve every
+  metric exactly.
+- **No manipulation.** No hidden text, no keyword stuffing (see ats-notes.md).
+- **Valid LaTeX**: balanced braces; escape `% & $ # _`.
 
-- **Truthfulness first.** Only surface skills/experience that already exist on the
-  base resume. Rephrase to match JD vocabulary; do NOT fabricate tools, years, or
-  outcomes. If the JD wants something the candidate lacks, leave it out and flag it
-  to the user as a gap.
-- **Mirror JD language.** If the resume says "vector databases" and the JD says
-  "vector stores / embeddings", align the wording (within truth).
-- **Professional Summary**: rewrite the 2–3 sentence summary to lead with the role's
-  top 2–3 requirements that the candidate genuinely meets.
-- **Technical Skills**: reorder so the JD's must-have stack appears first. Add
-  genuine-but-missing keywords; remove or de-emphasize clutter irrelevant to this JD.
-- **Experience bullets**: reorder bullets so the most JD-relevant impact leads each
-  role. Lightly re-word to include target keywords. Preserve all metrics/numbers
-  exactly — never alter quantified results.
-- **Keep it ATS-safe**: plain section names, no tables/graphics for skills, standard
-  fonts. The base template is already ATS-friendly — don't introduce parsing hazards.
-
-### 5. Build both formats (PDF + DOCX)
-From the application folder, produce both outputs from the single tailored `.tex`.
-The candidate shares DOCX often (more readable; Workday/Taleo parse it best) and
-PDF for AI-native systems (Ashby/Lever/Greenhouse).
-
+### 5. Build PDF + DOCX
+From the application folder, build both from the single tailored `.tex`:
 ```bash
-# PDF (self-contained engine, no Overleaf needed)
 tectonic <company-slug>-resume.tex
 
-# DOCX — ATS-clean: the Lua filter flattens heading tables into linear text
 pandoc <company-slug>-resume.tex \
   --lua-filter=../../.kiro/skills/resume-tailor/flatten-tables.lua \
   -o <company-slug>-resume.docx
 ```
+The Lua filter flattens the job-heading `tabular*` blocks into plain
+`Company — Location` / `Title — Dates` lines so strict parsers read them linearly.
 
-Why the filter: pandoc expands the resume's custom macros fine, but turns each
-job-heading `tabular*` into a 2-column table — exactly what strict ATS parsers
-(Workday/Taleo) mangle. `flatten-tables.lua` converts those into plain
-`Company — Location` / `Title — Dates` lines so parsing stays linear.
-
-### 6. Parse self-check (don't skip)
-After building, verify the DOCX an ATS would read is clean:
+### 6. Parse self-check (feedback loop)
 ```bash
-pandoc <company-slug>-resume.docx -t plain | grep -c -- "----"   # must be 0 (no tables)
+pandoc <company-slug>-resume.docx -t plain | grep -c -- "----"   # expect 0
 ```
-Spot-check that target keywords survived extraction (ligature-prone words like
-"fine-tuning", "classifier", "efficient" must appear intact). If the base `.tex`
-lacks `\usepackage[T1]{fontenc}` + `\usepackage{lmodern}` + `\usepackage{cmap}`,
-recommend adding them — they fix ligature breakage in extracted PDF text.
+Confirm target keywords (and ligature-prone words like "fine-tuning", "classifier",
+"efficient") survive extraction. **If the count is not 0 or keywords are missing or
+broken, fix the cause and rebuild before continuing** — do not report a failing build.
 
 ### 7. Report
-Output a concise diff-style summary:
-- Keywords added / removed / reordered.
-- Sections changed.
-- **Gaps**: JD requirements not supported by the resume (so the user can decide).
-- Paths to both the `.pdf` and `.docx`.
-- Result of the parse self-check.
+Concise diff-style summary: keywords added/removed/reordered; sections changed;
+**Gaps** (JD asks the resume can't back); paths to the `.pdf` and `.docx`; self-check result.
+
+### 8. Auto-commit & push
+Commit just this application folder and push so the user never has to:
+```bash
+git add applications/<company-slug>__<position-slug>/
+git commit -m "Add tailored application: <Company> — <Position>"
+git push
+```
+If `git push` fails (e.g. no network/auth), report it and leave the commit in place.
 
 ## Guardrails
-- Do not fabricate experience, employers, dates, or metrics.
-- Do not modify `parvez-akhtar-base-resume.tex`.
+- Never fabricate experience, employers, dates, or metrics.
+- Never modify `parvez-akhtar-base-resume.tex`.
 - Keep the resume to one page unless the user asks otherwise — trim, don't pad.
-- Preserve valid LaTeX (balanced braces, escaped `%`, `&`, `$`, `#`, `_`).
 
 ## After tailoring
-Hand off to the `cover-letter` skill when the user wants a cover letter, and use the
-`professional-writing` skill for any prose polishing along the way.
+Hand off to the `cover-letter` skill when the user wants a cover letter; use the
+`professional-writing` skill to polish prose.
