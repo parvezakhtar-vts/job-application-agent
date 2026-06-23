@@ -47,6 +47,9 @@ Structure (keep to ~250–350 words, 3–4 short paragraphs, one page):
 - Sign off with `Best,` then the candidate's name and contact line (matches the
   casual `Hi team,` opener; avoid stiff closings like "Best regards,"/"Sincerely,").
 - Weave in 2-3 of the JD's target keywords naturally (many ATS parse the letter too).
+- **Bold for scannability**: bold quantified results (metrics, %, $) and 1-2 marquee
+  terms/systems per paragraph so a 6-second skim lands on impact. Don't over-bold —
+  if everything is bold, nothing stands out.
 
 ### 5. Build PDF + DOCX
 Convert the Markdown letter to both formats so it can be uploaded directly:
