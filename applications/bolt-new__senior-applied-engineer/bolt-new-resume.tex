@@ -1,10 +1,6 @@
-\documentclass[11pt,letterpaper]{article}
+\documentclass[11pt,a4paper]{article}
 
 % Packages for formatting
-\usepackage[T1]{fontenc}   % proper glyph encoding for clean PDF text extraction
-\usepackage{lmodern}
-\usepackage{cmap}          % make pdflatex output text-searchable (ATS-safe)
-\usepackage{microtype}
 \usepackage[empty]{fullpage}
 \usepackage{titlesec}
 \usepackage[usenames,dvipsnames]{color}
@@ -97,9 +93,9 @@
       \resumeItemListStart
         \resumeItem{As \textbf{Lead Architect}, drove cloud-native GenAI delivery across client accounts spanning high-growth startups (Seed to Series F) and global enterprises including \textbf{CNBC London} and \textbf{VTS}, translating ambiguous business problems into production architectures.}
         \resumeItem{\textbf{Agentic Automation:} Orchestrated a serverless \textbf{multi-agent} framework for Salesforce automation that coordinates \textbf{multi-step workflows} via \textbf{tool/function calling} over \textbf{MCP (Model Context Protocol)} and \textbf{swarm-based orchestration}. Cut idle compute via a pure \textbf{pay-per-execution} model (saving \textbf{$\sim$\$45k/year}).}
-        \resumeItem{\textbf{Client --- \href{https://www.vts.com/}{VTS} (current) --- Lease Abstraction:} Built an agentic \textbf{document-intelligence} pipeline that abstracts structured terms from commercial real-estate leases with \textbf{structured-output validation}. \textbf{Analyzed failure modes} behind a \textbf{10-point accuracy regression} and redesigned prompt strategy and image preprocessing to recover the full drop, restoring field-level extraction to its \textbf{$\sim$88\% baseline} and unblocking downstream automation.}
-        \resumeItem{\textbf{Client --- \href{https://www.outcomelabs.ai/}{Outcomelabs.ai} (GenAI Platform):} Architected a \textbf{Field-Aware Extraction Engine} processing \textbf{2M+ records/month}. Built a \textbf{"Strategy Router"} that classifies each field by complexity and routes $\sim$60\% to deterministic regex/rule-based parsers, reserving the LLM for the rest --- cutting token spend $\sim$40\% with no measurable accuracy loss.}
-        \resumeItem{\textbf{Search \& Ranking (applied research):} Implemented a \textbf{Hybrid Search} pipeline fusing \textbf{SPLADE} (learned sparse) and \textbf{Sentence-BERT} (dense) retrieval via \textbf{Reciprocal Rank Fusion}, then layered \textbf{Cross-Encoder re-ranking} over the top candidates --- improving \textbf{NDCG@5 by $\sim$15 points (0.71 $\to$ 0.86)}.}
+        \resumeItem{\textbf{Client: \href{https://www.vts.com/}{VTS} (current), Lease Abstraction.} Built an agentic \textbf{document-intelligence} pipeline that abstracts structured terms from commercial real-estate leases with \textbf{structured-output validation}. \textbf{Analyzed failure modes} behind a \textbf{10-point accuracy regression} and redesigned prompt strategy and image preprocessing to recover the full drop, restoring field-level extraction to its \textbf{$\sim$88\% baseline} and unblocking downstream automation.}
+        \resumeItem{\textbf{Client: \href{https://www.outcomelabs.ai/}{Outcomelabs.ai} (GenAI Platform).} Architected a \textbf{Field-Aware Extraction Engine} processing \textbf{2M+ records/month}. Built a \textbf{"Strategy Router"} that classifies each field by complexity and routes $\sim$60\% to deterministic regex/rule-based parsers, reserving the LLM for the rest, cutting token spend $\sim$40\% with no measurable accuracy loss.}
+        \resumeItem{\textbf{Search \& Ranking (applied research):} Implemented a \textbf{Hybrid Search} pipeline fusing \textbf{SPLADE} (learned sparse) and \textbf{Sentence-BERT} (dense) retrieval via \textbf{Reciprocal Rank Fusion}, then layered \textbf{Cross-Encoder re-ranking} over the top candidates, improving \textbf{NDCG@5 by $\sim$15 points (0.71 $\to$ 0.86)}.}
         \resumeItem{\textbf{Scale \& Impact:} Scaled the platform from MVP to production, underpinning a \textbf{\$20M+ enterprise deal pipeline} within 6 months while optimizing fine-tuning strategies for cost efficiency.}
         \resumeItem{\textbf{Core Engineering:} Constructed an entity matching pipeline on 22M records using an ensemble of \textbf{TF-IDF/Cosine Similarity} and 7 text metrics feeding an \textbf{XGBoost classifier} (85.3\% AUC).}
       \resumeItemListEnd
