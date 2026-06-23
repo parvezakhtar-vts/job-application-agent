@@ -35,7 +35,7 @@ Then paste the JD (or a JD URL). The agent will:
 5. **Report** a change summary plus a list of gaps (JD asks the resume can't back).
 6. **Build** both a PDF (`tectonic`) and an ATS-clean DOCX (`pandoc` + filter).
 7. **Cover letter** — mandatory for every application: research what makes a strong
-   letter for the role, then write `cover-letter.md` in the same folder.
+   letter for the role, write `cover-letter.md`, and build `cover-letter.pdf` + `.docx`.
 8. **Push** — automatically commits the application folder and pushes to the remote.
 
 Example output folder:
@@ -46,6 +46,8 @@ applications/stripe__senior-ml-engineer/
   stripe-resume.pdf
   stripe-resume.docx
   cover-letter.md
+  cover-letter.pdf
+  cover-letter.docx
 ```
 
 ## Safety & guardrails

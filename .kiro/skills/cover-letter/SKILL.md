@@ -48,14 +48,21 @@ Structure (keep to ~250–350 words, 3–4 short paragraphs, one page):
   casual `Hi team,` opener; avoid stiff closings like "Best regards,"/"Sincerely,").
 - Weave in 2-3 of the JD's target keywords naturally (many ATS parse the letter too).
 
-### 5. Commit & push
+### 5. Build PDF + DOCX
+Convert the Markdown letter to both formats so it can be uploaded directly:
+```bash
+pandoc cover-letter.md -o cover-letter.docx
+pandoc cover-letter.md -o cover-letter.pdf --pdf-engine=tectonic
+```
+
+### 6. Commit & push
 In the normal flow, a cover letter is written for every application and the
 resume-tailor skill commits the whole folder once at the end (resume + formats +
-this letter). **If this skill is run standalone** (no resume tailoring in this run),
-commit and push yourself:
+this letter, including `cover-letter.pdf` and `cover-letter.docx`). **If this skill is
+run standalone** (no resume tailoring in this run), commit and push yourself:
 ```bash
-git add applications/<company-slug>__<position-slug>/cover-letter.md
-git commit -m "Add cover letter: <Company> — <Position>"
+git add applications/<company-slug>__<position-slug>/
+git commit -m "Add cover letter: <Company>, <Position>"
 git push
 ```
 If `git push` fails, report it and leave the commit in place.
