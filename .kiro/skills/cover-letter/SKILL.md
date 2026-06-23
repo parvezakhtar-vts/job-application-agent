@@ -60,6 +60,7 @@ If `git push` fails, report it and leave the commit in place.
 
 ## Guardrails
 - Every claim must be backed by the resume — no invented projects or numbers.
+- No em dashes (`—`): use commas, colons, parentheses, or split into two sentences.
 - No clichés ("team player", "fast-paced environment", "I am passionate about").
 - Specific > generic: a letter that could be sent to any company has failed.
 - Match the company's tone (formal vs. startup-casual) based on the JD's voice.

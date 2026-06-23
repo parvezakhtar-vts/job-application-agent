@@ -25,7 +25,7 @@ function Table(tbl)
         local ils = cell_to_inlines(cell)
         if #ils > 0 then
           if #line > 0 then
-            table.insert(line, pandoc.Str("  \u{2014}  ")) -- em dash separator
+            table.insert(line, pandoc.Str("  |  ")) -- pipe separator (no em dash)
           end
           for _, il in ipairs(ils) do table.insert(line, il) end
         end

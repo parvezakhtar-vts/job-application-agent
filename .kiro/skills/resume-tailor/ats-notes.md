@@ -52,8 +52,9 @@ Optimization means genuine matching, not tricks.
 - Default: send DOCX where the portal accepts it; PDF for AI-native systems.
 
 ## LaTeX/PDF text-extraction note
-pdflatex with default OT1 Computer Modern renders `fi`/`fl`/`ff` ligatures that
-some extractors drop, breaking words like "fine-tuning", "classifier", "efficient".
-Fix in the preamble: `\usepackage[T1]{fontenc}`, `\usepackage{lmodern}`,
-`\usepackage{cmap}` (cmap makes pdflatex output text-searchable). tectonic output
-extracts more reliably but the same fixes are recommended.
+The base resume's formatting is canonical: do not change its preamble, fonts, or
+page geometry to chase extraction "fixes" — visual consistency with the base matters
+more. pdflatex/CM ligatures (`fi`/`fl`) can occasionally drop in extracted text; if a
+specific role needs guaranteed extraction, the only no-visual-change addition is
+`\usepackage{cmap}` (adds a ToUnicode map). Do not add `fontenc`/`lmodern`/`microtype`
+or switch paper size, as those visibly alter the layout.

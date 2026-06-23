@@ -30,6 +30,7 @@ resumes, cover letters, outreach messages, and similar documents.
 - [ ] Kill clichés: "team player", "go-getter", "passionate about", "fast-paced
       environment", "results-driven", "synergy", "think outside the box".
 - [ ] No weak hedges: "helped", "assisted", "involved in" → name what *you* did.
+- [ ] No em dashes (`—`): use commas, colons, parentheses, or split into two sentences.
 - [ ] Consistent tense (past for prior roles, present for current).
 - [ ] Consistent punctuation, capitalization, and number style (e.g., always "20%"
       or always "20 percent" — don't mix).

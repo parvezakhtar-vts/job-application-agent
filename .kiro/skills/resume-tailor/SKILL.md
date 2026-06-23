@@ -61,6 +61,10 @@ Edit only the copied .tex. Rules:
   missing keywords; drop irrelevant clutter.
 - **Experience**: reorder bullets so the most JD-relevant impact leads. Preserve every
   metric exactly.
+- **No em dashes.** Do not use `---`/`—`; use commas, colons, parentheses, or split
+  into two sentences. (The base resume contains a few `---`; remove them in the copy.)
+- **Match the base formatting.** Do not change the preamble, packages, fonts, or page
+  geometry (e.g. keep `a4paper`); the base layout is canonical. Edit content only.
 - **No manipulation.** No hidden text, no keyword stuffing (see ats-notes.md).
 - **Valid LaTeX**: balanced braces; escape `% & $ # _`.
 
