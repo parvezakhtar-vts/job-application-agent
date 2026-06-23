@@ -27,7 +27,8 @@ Copy this into your reply and check items off as you go:
 - [ ] 5. Build PDF (tectonic) + DOCX (pandoc + flatten-tables.lua)
 - [ ] 6. Parse self-check; if it fails, fix and rebuild
 - [ ] 7. Report changes + gaps
-- [ ] 8. Auto-commit & push the application folder
+- [ ] 8. Draft the cover letter (mandatory) via the cover-letter skill
+- [ ] 9. Commit the whole application folder once & push
 ```
 
 ### 1. Parse the JD
@@ -87,11 +88,16 @@ broken, fix the cause and rebuild before continuing** — do not report a failin
 Concise diff-style summary: keywords added/removed/reordered; sections changed;
 **Gaps** (JD asks the resume can't back); paths to the `.pdf` and `.docx`; self-check result.
 
-### 8. Auto-commit & push
-Commit just this application folder and push so the user never has to:
+### 8. Cover letter (mandatory)
+A cover letter is required for every application. Hand off to the `cover-letter`
+skill to research and draft `cover-letter.md` in the same folder before committing.
+
+### 9. Commit & push (once, at the end)
+After the resume, both formats, and the cover letter all exist, commit the whole
+application folder once and push so the user never has to:
 ```bash
 git add applications/<company-slug>__<position-slug>/
-git commit -m "Add tailored application: <Company> — <Position>"
+git commit -m "Add application: <Company> — <Position> (resume + cover letter)"
 git push
 ```
 If `git push` fails (e.g. no network/auth), report it and leave the commit in place.
@@ -102,5 +108,6 @@ If `git push` fails (e.g. no network/auth), report it and leave the commit in pl
 - Keep the resume to one page unless the user asks otherwise — trim, don't pad.
 
 ## After tailoring
-Hand off to the `cover-letter` skill when the user wants a cover letter; use the
-`professional-writing` skill to polish prose.
+A cover letter is mandatory — always hand off to the `cover-letter` skill. Use the
+`professional-writing` skill to polish all prose. The commit in step 9 covers the
+resume, both formats, and the cover letter together.

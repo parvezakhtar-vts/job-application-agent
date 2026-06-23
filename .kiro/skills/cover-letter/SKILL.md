@@ -46,8 +46,11 @@ Structure (keep to ~250–350 words, 3–4 short paragraphs, one page):
   user look it up on LinkedIn.
 - Weave in 2-3 of the JD's target keywords naturally (many ATS parse the letter too).
 
-### 5. Auto-commit & push
-So the user never pushes manually:
+### 5. Commit & push
+In the normal flow, a cover letter is written for every application and the
+resume-tailor skill commits the whole folder once at the end (resume + formats +
+this letter). **If this skill is run standalone** (no resume tailoring in this run),
+commit and push yourself:
 ```bash
 git add applications/<company-slug>__<position-slug>/cover-letter.md
 git commit -m "Add cover letter: <Company> — <Position>"

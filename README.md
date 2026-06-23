@@ -34,8 +34,9 @@ Then paste the JD (or a JD URL). The agent will:
    missing keywords, drop clutter. Metrics are preserved; nothing is fabricated.
 5. **Report** a change summary plus a list of gaps (JD asks the resume can't back).
 6. **Build** both a PDF (`tectonic`) and an ATS-clean DOCX (`pandoc` + filter).
-7. **Cover letter** — on request, research what makes a strong letter for the role,
-   then write `cover-letter.md` in the same folder.
+7. **Cover letter** — mandatory for every application: research what makes a strong
+   letter for the role, then write `cover-letter.md` in the same folder.
+8. **Push** — automatically commits the application folder and pushes to the remote.
 
 Example output folder:
 
