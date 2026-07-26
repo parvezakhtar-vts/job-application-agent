@@ -1,0 +1,165 @@
+\documentclass[11pt,a4paper]{article}
+
+% Packages for formatting
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+
+% Page formatting
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins - Optimized for maximum space usage
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[itemsep=2pt, topsep=0pt, partopsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Parvez Akhtar} \\ \vspace{1pt}
+    \small \href{tel:+918882327732}{+91 888-232-7732} $\vert$ \href{mailto:parvezakhtar218@gmail.com}{\underline{parvezakhtar218@gmail.com}} $\vert$
+    \href{https://www.linkedin.com/in/parvezakhtar/}{\underline{LinkedIn}} $\vert$
+    \href{https://github.com/ipmob}{\underline{GitHub}} $\vert$
+    \href{https://www.kaggle.com/parvez218}{\underline{Kaggle}}
+\end{center}
+
+%-----------SUMMARY-----------
+\section{Professional Summary}
+\small{Senior Generative AI Engineer with 5+ years building high-scale distributed systems and production-grade AI agents. Leads the design and deployment of agentic solutions spanning multi-agent orchestration (LangGraph, MCP), RAG (Retrieval-Augmented Generation) over vector search, LLM fine-tuning and evaluation, prompt engineering, and agent observability and guardrails. Reduced inference costs by \textasciitilde{}90\% for production extraction engines while taking experimental GenAI to reliable, cost-efficient enterprise scale.}
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{LLMs \& Generative AI}{: Transformer Architecture \& Attention, Fine-tuning (LoRA/QLoRA, Hugging Face Transformers), Hyperparameter Tuning, Prompt Engineering, Structured Outputs, Embeddings \& Vectorization, Pre-trained \& Deployed Models.} \\
+     \textbf{AI Agents \& Orchestration}{: Multi-Agent Orchestration (LangGraph, OpenAI Agents SDK, Anthropic SDK, LangChain), Tool-Use \& Function Calling, Multi-Step Planning, Agent Memory (Short-term \& Long-term), Human-in-the-Loop, MCP (Model Context Protocol), Swarm-based Orchestration.} \\
+     \textbf{RAG \& Vector Search}{: RAG Pipelines over Documents/Databases/APIs, Hybrid Search (SPLADE + Dense Retrieval), Cross-Encoder Re-ranking, Reciprocal Rank Fusion, Vector Databases (Qdrant, PGVector), Vector Indexing, LlamaIndex.} \\
+     \textbf{Evals \& Observability}{: LLM Tracing \& Eval (Langfuse, RAGAS, OpenTelemetry), Guardrails \& Prompt-Injection Defense, CI/CD Evaluation Gates, SigNoz, CloudWatch, Prometheus.} \\
+     \textbf{ML \& Data}{: PyTorch, TensorFlow, Scikit-learn, XGBoost, Data Preprocessing, Large-Scale Datasets, Snowflake Cortex, Apache Airflow, Kafka, Elasticsearch, ETL Pipelines, MongoDB, Redis, PostgreSQL.} \\
+     \textbf{Languages \& Cloud}{: Python, Java, TypeScript, SQL; AWS (SageMaker, Bedrock, Lambda, ECS), Azure OpenAI, GCP, Kubernetes, Docker, Terraform, Temporal.io.}
+    }}
+ \end{itemize}
+
+%-----------EXPERIENCE-----------
+\section{Professional Experience}
+  \resumeSubHeadingListStart
+
+% BIGSTEP TECHNOLOGIES
+    \resumeSubheading
+      {\href{https://bigsteptech.com/}{Bigstep Technologies}}{Remote}
+      {Senior AI/ML Engineer, Lead Architect}{04/2025 -- Present}
+      \resumeItemListStart
+        \resumeItem{As \textbf{Lead Architect}, led the design and deployment of cloud-native GenAI features across client accounts spanning high-growth startups (Seed to Series F) and global enterprises including \textbf{CNBC London} and \textbf{VTS}; ran technical design sessions that translated ambiguous business goals into scalable, secure production AI architectures.}
+        \resumeItem{\textbf{AI Agents \& Orchestration:} Built a \textbf{serverless multi-agent} framework for Salesforce automation with \textbf{tool/function calling}, \textbf{multi-step planning}, and agent memory over \textbf{MCP (Model Context Protocol)} and \textbf{swarm-based orchestration}. Cut idle compute via a pure \textbf{pay-per-execution} model (saving \textbf{\textasciitilde{}\$45k/year}).}
+        \resumeItem{\textbf{RAG \& Vector Search:} Built a \textbf{Hybrid Search} pipeline fusing \textbf{SPLADE} (learned sparse) and \textbf{Sentence-BERT} (dense vector) retrieval via \textbf{Reciprocal Rank Fusion}, then layered \textbf{Cross-Encoder re-ranking} over the top candidates, improving \textbf{NDCG@5 by \textasciitilde{}15 points (0.71 to 0.86)}.}
+        \resumeItem{\textbf{Client, \href{https://www.outcomelabs.ai/}{Outcomelabs.ai} (GenAI Platform):} Architected a \textbf{Field-Aware Extraction Engine} processing \textbf{2M+ records/month}. Built a \textbf{"Strategy Router"} that classifies each field by complexity and routes \textasciitilde{}60\% to deterministic parsers, reserving the LLM for the rest, cutting token spend \textasciitilde{}40\% with no measurable accuracy loss.}
+        \resumeItem{\textbf{Client, \href{https://www.vts.com/}{VTS} (current), Lease Abstraction:} Built an agentic \textbf{document-intelligence} pipeline that abstracts structured terms from commercial real-estate leases with \textbf{structured-output validation}. Diagnosed a \textbf{10-point accuracy regression} and redesigned \textbf{prompt strategy} and image preprocessing to recover the full drop, restoring field-level extraction to its \textbf{\textasciitilde{}88\% baseline} and unblocking downstream automation.}
+        \resumeItem{\textbf{Scale \& Impact:} Scaled the platform from MVP to production, underpinning a \textbf{\$20M+ enterprise deal pipeline} within 6 months while continuously optimizing models for performance and cost efficiency.}
+        \resumeItem{\textbf{Large-Scale ML:} Constructed an entity-matching pipeline on 22M records using an ensemble of \textbf{TF-IDF/Cosine Similarity} and 7 text metrics feeding an \textbf{XGBoost classifier} (85.3\% AUC).}
+      \resumeItemListEnd
+
+    % KUTTL (INCUBATED)
+    \resumeSubheading
+      {Kuttl (Incubated at IIM Lucknow)}{Remote}
+      {Founding Engineer}{12/2023 -- 03/2025}
+      \resumeItemListStart
+        \resumeItem{Joined as \textbf{Founding Engineer} for an IIM Lucknow-incubated, GenAI-native orchestration platform; built the MVP from 0-to-1 that secured a term sheet, then documented and standardized the codebase for a \textbf{zero-downtime handover} to the incoming engineering team.}
+        \resumeItem{\textbf{Fine-tuned Llama-3-8B} (using LoRA) to replace GPT-4 for structured entity extraction, achieving \textbf{98\% schema compliance} while reducing per-token inference costs by \textbf{90\%} and latency by 300ms.}
+        \resumeItem{\textbf{Evals:} Operationalized the ML lifecycle with \textbf{CI/CD evaluation gates} (\textbf{RAGAS}) scoring \textbf{faithfulness and answer-relevancy}, automatically blocking deployments below threshold and catching quality regressions before production.}
+        \resumeItem{Applied \textbf{semantic caching} and request batching for \textbf{RAG} endpoints, improving \textbf{P99 latency by 40\%} during high-concurrency bursts.}
+        \resumeItem{Engineered a distributed document-parsing pipeline using \textbf{FastAPI} and \textbf{Temporal.io}, processing 50k+ daily messages with resilient retry logic and dead-letter queues to ensure no data loss.}
+      \resumeItemListEnd
+
+    % AMPLICOMM
+    \resumeSubheading
+      {\href{https://amplicomm.com/}{Amplicomm}}{Bengaluru, India}
+      {SDE-2}{05/2023 -- 12/2023}
+      \resumeItemListStart
+        \resumeItem{Led a team of 3 through a \textbf{Strangler-Fig migration} of a legacy monolith to Spring Boot microservices, enabling independent, incremental deploys with instant rollback; enforced \textbf{SonarQube} quality gates that cut cyclomatic complexity \textasciitilde{}42\%.}
+        \resumeItem{Established a centralized identity broker using \textbf{Keycloak} and \textbf{Spring Security}, replacing stateful DB lookups with \textbf{stateless JWT} validation to cut login latency by 30\%.}
+        \resumeItem{Engineered a \textbf{Schema-per-Tenant} architecture with \textbf{RBAC (Role-Based Access Control)} for 21 enterprise clients, ensuring data integrity via automated checksum reconciliation pipelines.}
+      \resumeItemListEnd
+
+    % AMAZON
+    \resumeSubheading
+      {\href{https://www.amazon.in/}{Amazon}}{Bengaluru, India}
+      {Software Development Engineer (SDE)}{03/2021 -- 03/2023}
+      \resumeItemListStart
+        \resumeItem{Owned the full SDLC for high-scale microservices, co-developing the SmartPOS billing engine and scaling it to support \textbf{3,000+ enterprise merchants} with 99.99\% availability.}
+        \resumeItem{Optimized cloud infrastructure costs by \textbf{25\% (\textasciitilde{}\$100k/yr)} via strategic re-architecture of ECS services to utilize \textbf{Spot Instances} and custom auto-scaling policies.}
+        \resumeItem{Developed a data-driven testing framework and \textbf{CloudWatch} service-level alarms, identifying \textbf{N+1 query bottlenecks} that cut p95 API latency by \textbf{20\%} and surfaced performance regressions before release.}
+        \resumeItem{Executed the zero-downtime migration of 6 core microservices from GCP to AWS, ensuring data consistency and seamless customer transition.}
+      \resumeItemListEnd
+
+    % PUBLICIS SAPIENT
+    \resumeSubheading
+      {\href{https://www.publicissapient.com/}{Publicis Sapient}}{Remote, India}
+      {Associate Data Engineer}{09/2020 -- 03/2021}
+      \resumeItemListStart
+        \resumeItem{Designed high-frequency data ingestion pipelines using \textbf{Apache Airflow} and \textbf{Crawlera} to scrape pricing data from Amazon, Walmart, and Target, bypassing complex anti-bot protections for competitive intelligence.}
+        \resumeItem{Refined \textbf{Elasticsearch} indexing strategies and aggregation queries, reducing query latency by \textasciitilde{}40\% to enable sub-second dashboard load times for brand performance analytics.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {\href{https://nitdelhi.ac.in/}{National Institute of Technology Delhi}}{Delhi, India}
+      {B.Tech in Computer Science \& Engineering}{2016 -- 2020}
+  \resumeSubHeadingListEnd
+
+%-----------ACHIEVEMENTS-----------
+\section{Achievements}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Amazon "On the Hero Road" Award}{: Recognized for exceptional impact on team delivery and engineering excellence.} \\
+     \textbf{\href{http://confirm.udacity.com/33R2M79Q}{Udacity Computer Vision Nanodegree}}{: Full scholarship recipient (sponsored by Facebook).} \\
+     \textbf{Deep Learning Specialization}{: Completed 5-course specialization (Coursera) with perfect score.}
+    }}
+ \end{itemize}
+
+\end{document}
